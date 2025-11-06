@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Score Quest 🎯</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+<section class="panel">
+<h1>🎯 Score Quest – JavaScript massiivide harjutus</h1>
+<div class="inner">
+<div class="controls">
+<button id="show" class="primary" onclick="renderAll()">
+Kuva kõik punktid (forEach)
+</button>
+<button id="bonus" onclick="addBonus()">Lisa +5 punkti (map)</button>
+<button id="passed" onclick="filterByThreshold()">
+Filtreeri punktid ≥ 60 (filter)
+</button>
+<button id="average" onclick="showAverage()">
+Arvuta keskmine (reduce)
+</button>
+<button id="reset" onclick="resetAll()">Taasta algseis</button>
+<button id="chain" onclick="chainAverage()">
+⭐ Ahela väljakutse
+</button>
+
+<div class="row">
+<input
+id="count"
+type="number"
+min="3"
+max="30"
+value="9"
+aria-label="Elementide arv"
+/>
+<button data-testid="btn-random" onclick="makeRandom()">
+🎲 Loo uued juhuslikud skoorid
+</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- RIGHT: View -->
+<section class="panel">
+<h2>👀 Vaade</h2>
+<div class="inner">
+<div class="stats">
+<div class="kpi">
+<div class="label">Elemente</div>
+<div class="value" id="kpi-count" data-testid="kpi-count">0</div>
+</div>
+<div class="kpi">
+<div class="label">Keskmine</div>
+<div class="value" id="kpi-avg" data-testid="kpi-avg">–</div>
+</div>
+ 
+</div>
+
+<h2>Punktid:</h2>
+<div class="list" id="scoreList"></div>
+
+<p id="result"></p>
+</div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

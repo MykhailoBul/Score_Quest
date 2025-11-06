@@ -1,0 +1,80 @@
+body {
+margin: 20px 0;
+font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial,
+sans-serif;
+background: #f0f1ff;
+}
+header {
+padding: 24px 20px;
+text-align: center;
+}
+h1 {
+margin: 0;
+font-size: 32px;
+padding-bottom: 60px;
+}
+.controls {
+display: grid;
+grid-template-columns: repeat(6, 1fr);
+gap: 10px;
+}
+.controls button,
+.controls input[type="number"] {
+background: #abb1f2;
+padding: 10px 12px;
+border-radius: 12px;
+font-weight: 600;
+}
+.controls button {
+cursor: pointer;
+}
+.controls button.primary {
+background: linear-gradient(180deg, #6e51ff, #5b3cf4);
+}
+.row {
+display: flex;
+align-items: center;
+gap: 10px;
+grid-column: span 2;
+}
+
+.stats {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 10px;
+margin-bottom: 10px;
+}
+.kpi {
+background: #cfd2f2;
+padding: 10px;
+border-radius: 12px;
+text-align: center;
+}
+.kpi .label {
+font-size: 12px;
+}
+.kpi .value {
+font-size: 20px;
+font-weight: 700;
+margin-top: 4px;
+}
+
+.list {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+gap: 10px;
+min-height: 84px;
+justify-items: center;
+margin-top: 50px;
+}
+
+.panel {
+border: 1px solid rgba(255, 255, 255, 0.06);
+border-radius: 16px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+margin: 20px;
+}
+
+.panel .inner {
+padding: 14px 16px 16px;
+}
