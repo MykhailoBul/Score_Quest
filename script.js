@@ -7,15 +7,17 @@ const result = document.getElementById('result');
 const kpiCount = document.getElementById('kpi-count');
 const kpiAvg = document.getElementById('kpi-avg');
 const kpiTh = document.getElementById('kpi-th');
+const countInput = document.getElementById("count");
 
-function renderScores(scores) {
-  scoreList.innerHTML = ''; 
-  scores.forEach(score => {
-    const scoreItem = document.createElement("p");
-    scoreItem.textContent = score;
-    scoreList.appendChild(scoreItem);
+
+function renderScores() {
+  scoreList.innerHTML = "";
+  currentScores.forEach((score) => {
+      const item = document.createElement("p");
+      item.textContent = score;
+      scoreList.appendChild(item);
   });
-  kpiCount.textContent = currentScores.length;
+     kpiCount.textContent = currentScores.length;
 }
 
 kpiCount.textContent = currentScores.length;
@@ -53,31 +55,29 @@ function resetAll(){
 }
 
 function makeRandom(){
-    const count = parseInt(countInput.value);
-    currentScores = makeRandomScores;
-    renderScores(currentScores);
-    kpiAvg.textContent = '–';
+  const countInput = document.getElementById('count');
+  let count = 9; 
+  if (countInput) {
+    const parsed = parseInt(countInput.value, 10);
+    if (!Number.isNaN(parsed) && parsed > 0) count = Math.min(Math.max(parsed, 1), 100);
+  }
+  currentScores = generateRandomScores(count);
+  renderScores(currentScores);
+  kpiAvg.textContent = '–';
 }
 
 function generateRandomScores(count) {
-  const scores = [];
+  const out = [];
   for (let i = 0; i < count; i++) {
-    scores.push(Math.floor(Math.random() * 100) + 1); // Random scores between 1 and 100
+    out.push(Math.floor(Math.random() * 100) + 1);
   }
-  return scores;
+  return out;
 }
 
-// Initial load of random scores
-makeRandom();
-
-// Event listeners for the buttons
-document.getElementById("show").addEventListener("click", renderAll);
-document.getElementById("bonus").addEventListener("click", addBonus);
-document.getElementById("passed").addEventListener("click", filterByThreshold);
-document.getElementById("average").addEventListener("click", showAverage);
-document.getElementById("reset").addEventListener("click", resetAll);
-document.getElementById("chain").addEventListener("click", () => {
-  // A simple chain example: applying all transformations in sequence
-  addBonus();
-  filterByThreshold();
+function chainAverage() {
+  currentScores = currentScores.map(s => s + 5);
+  const filtered = currentScores.filter(s => s >= 60);
+  renderScores(filtered);
   showAverage();
+}
+
